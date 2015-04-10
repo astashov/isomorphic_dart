@@ -30,3 +30,7 @@ class Subject<T> implements StreamController<T> {
   call(T event) => add(event);
 
 }
+
+class SomeNewClass {
+  final int blah;
+}

@@ -3,6 +3,13 @@ part of isomorphic_dart.models;
 class Movie {
   final Map<String, Object> _json;
 
+  String get releaseDate => _json["release_date"];
+  String get year => releaseDate.split("-").first;
+  String get title => _json["title"];
+  String get plot => _json["overview"];
+  int get runtime => _json["runtime"];
+  Credits get credits => new Credits.fromJson(_json["credits"]);
+
   int get id => _json["id"];
   String get posterPath => _json["poster_path"];
   String get rating {
@@ -12,12 +19,7 @@ class Movie {
     var rating = primary != null ? primary["certification"] : null;
     return rating != null && rating.isNotEmpty ? rating : "Unrated";
   }
-  String get releaseDate => _json["release_date"];
-  String get year => releaseDate.split("-").first;
-  String get title => _json["title"];
-  String get plot => _json["overview"];
-  int get runtime => _json["runtime"];
-  Credits get credits => new Credits.fromJson(_json["credits"]);
+
 
   Uri get posterUri {
     if (posterPath != null) {
